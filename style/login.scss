@@ -1,0 +1,18 @@
+@import "abstracts/mixins";
+
+html, body{
+    height: 100%;
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.loginSection{
+    @include flexContainer;
+width: 400px;
+height: 400px;
+background-color: white;
+border-radius: 25px;
+}

@@ -1,0 +1,15 @@
+html, body {
+  height: 100%;
+  background-color: blue;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.loginSection {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  border-radius: 25px;
+}/*# sourceMappingURL=login.css.map */
