@@ -1,6 +1,10 @@
-html, body {
+html,
+body {
   height: 100%;
-  background-color: blue;
+  background: url("/style/pictures/peakpx.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -8,8 +12,110 @@ html, body {
 }
 
 .loginSection {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
   width: 400px;
   height: 400px;
-  background-color: white;
+  background: transparent;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border: rgba(255, 255, 255, 0.5) solid;
   border-radius: 25px;
+  padding: 10px;
+}
+.loginSection h2 {
+  color: white;
+  font-size: 40px;
+  width: 80%;
+  height: 15%;
+  padding: 20px 0;
+  text-align: center;
+  border-bottom: 2px rgba(255, 255, 255, 0.5) solid;
+  margin: 0;
+}
+.loginSection form {
+  padding-top: 20px;
+  text-align: center;
+}
+.loginSection form input[type=text] {
+  padding: 5px;
+  width: 80%;
+  border-radius: 20px;
+  border: rgba(255, 255, 255, 0.5) solid;
+  background: transparent;
+  padding: 5px 15px;
+  margin: 10px 0;
+}
+.loginSection form input[type=password] {
+  padding: 5px;
+  width: 80%;
+  border-radius: 20px;
+  border: rgba(255, 255, 255, 0.5) solid;
+  background: transparent;
+  padding: 5px 15px;
+  margin: 10px 0;
+}
+.loginSection form input[type=submit] {
+  color: white;
+  padding: 5px;
+  width: 80%;
+  border-radius: 20px;
+  background: #0c1d24;
+  margin: 20px 0px !important;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+}
+.loginSection form ::-moz-placeholder {
+  color: white;
+}
+.loginSection form ::placeholder {
+  color: white;
+}
+.loginSection form .remember-me {
+  display: flex;
+  justify-content: center;
+}
+.loginSection form .remember-me label {
+  color: white;
+}
+.loginSection form .remember-me a {
+  margin-left: 40px;
+  color: black;
+}
+
+.divider {
+  color: white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.divider:after,
+.divider:before {
+  flex: 1;
+  content: "";
+  padding: 0.5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 7px;
+  width: 80%;
+}
+
+.alternateLogin {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.alternateLoginImage {
+  width: 30px;
+  height: 30px;
+  margin: 0px 10px;
+  padding: 5px;
+  background-color: white;
+  border-radius: 50px;
 }/*# sourceMappingURL=login.css.map */
