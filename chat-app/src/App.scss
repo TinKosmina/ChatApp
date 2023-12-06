@@ -1,0 +1,139 @@
+// mixins
+
+@mixin flexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+@mixin loginFormInputField {
+  padding: 5px;
+  width: 80%;
+  border-radius: 20px;
+  border: $colorBorder solid;
+  background: transparent;
+  padding: 5px 15px;
+  margin: 10px 0;
+}
+
+@mixin submitButton {
+  color: $colorWhite;
+  padding: 5px;
+  width: 80%;
+  border-radius: 20px;
+  background: $colorDarkGreen;
+  margin: 20px 0px !important;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+}
+
+@mixin divider {
+  color: $colorWhite;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+@mixin dividerBefore {
+  flex: 1;
+  content: "";
+  padding: 0.5px;
+  background-color: $colorBorder;
+  margin: 7px;
+  width: 80%;
+}
+
+// Color variables
+$colorWhite: white;
+$colorDarkGreen: #0c1d24;
+$colorBorder: #ffffff80;
+$colorBlack: #333333;
+
+html,
+body {
+  height: 100%;
+  background: url("../public/style/pictures/peakpx.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.loginSection {
+  @include flexContainer;
+  width: 400px;
+  height: 400px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  border: $colorBorder solid;
+  border-radius: 25px;
+  // box-shadow: 2px 2px 2px 1px $colorBorder;
+  padding: 10px;
+  h2 {
+    color: $colorWhite;
+    font-size: 40px;
+    width: 80%;
+    height: 15%;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 2px $colorBorder solid;
+    margin: 0;
+  }
+  form {
+    padding-top: 20px;
+
+    text-align: center;
+    input[type="text"] {
+      @include loginFormInputField;
+    }
+    input[type="password"] {
+      @include loginFormInputField;
+    }
+    input[type="submit"] {
+      @include submitButton;
+    }
+    ::placeholder {
+      color: $colorWhite;
+    }
+    .remember-me {
+      display: flex;
+      justify-content: center;
+      label {
+        color: $colorWhite;
+      }
+      a {
+        margin-left: 40px;
+        color: $colorBlack;
+      }
+    }
+  }
+}
+
+.divider {
+  @include divider;
+}
+.divider:after,
+.divider:before {
+  @include dividerBefore;
+}
+.alternateLogin {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.alternateLoginImage {
+  width: 30px;
+  height: 30px;
+  margin: 0px 10px;
+  padding: 5px;
+  background-color: $colorWhite;
+  border-radius: 50px;
+}
