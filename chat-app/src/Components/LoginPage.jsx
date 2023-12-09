@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 export default function LoginPage(){
@@ -25,7 +26,8 @@ export default function LoginPage(){
           <label for="remember-me">Remember me?</label>
           <a href="#">Forgot password?</a>
         </div>
-        <input type="submit" value="Login" />
+       <Link to="mainpage"> <input type="submit" value="Login" /></Link>
+        {/* <button type="submit"><Link to="main-page"></Link></button> */}
       </form>
       <div class="divider">OR</div>
       <div class="alternateLogin">

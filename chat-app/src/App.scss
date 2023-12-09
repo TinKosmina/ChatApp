@@ -137,3 +137,63 @@ body {
   background-color: $colorWhite;
   border-radius: 50px;
 }
+
+.mainPageHeader {
+  color: white;
+  z-index: 2;
+}
+
+aside {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: start;
+  background-color: $colorWhite;
+  height: 90vh;
+  border: 2px solid #0f9d79;
+  width: 100px;
+  border-radius: 15px;
+  transition: width 1.5 ease-in-out;
+}
+.navItem {
+  padding: 15px;
+}
+
+aside.active {
+  width: 200px;
+}
+aside.active .navBarText {
+  display: inline-block;
+  transition: width 1.5 ease-in-out;
+}
+.hamburger {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #0f9d79;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  background-color: white;
+  padding: 0;
+}
+.hamburger:hover {
+  background-color: #0f9d79;
+  border: 2px solid #0f9d79;
+}
+.faBars:hover {
+  color: $colorWhite;
+}
+.hamburger:hover .faBars {
+  color: $colorWhite;
+}
+.navBarText {
+  display: none;
+  width: 0px;
+  transition: all 0.5 ease-in-out;
+}
