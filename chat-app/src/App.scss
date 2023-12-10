@@ -150,14 +150,16 @@ aside {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: center;
+  align-content: start;
   justify-content: start;
   background-color: $colorWhite;
   height: 90vh;
   border: 2px solid #0f9d79;
   width: 100px;
   border-radius: 15px;
-  transition: width 1.5 ease-in-out;
+  transition: all 1.5 ease-in-out;
+  -webkit-transition: all 1.5 ease-in-out;
+  padding-left: 20px;
 }
 .navItem {
   padding: 15px;
