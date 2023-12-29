@@ -199,3 +199,11 @@ aside.active .navBarText {
   width: 0px;
   transition: all 0.5 ease-in-out;
 }
+.messagesSection {
+  ul {
+    list-style: none;
+    li {
+      color: white;
+    }
+  }
+}
