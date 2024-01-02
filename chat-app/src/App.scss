@@ -49,6 +49,7 @@
 // Color variables
 $colorWhite: white;
 $colorDarkGreen: #0c1d24;
+$colorGreen: rgba(15, 157, 122, 0.65);
 $colorBorder: #ffffff80;
 $colorBlack: #333333;
 
@@ -64,6 +65,8 @@ body {
   justify-content: center;
   align-content: center;
 }
+
+// LOGIN SECTION
 
 .loginSection {
   @include flexContainer;
@@ -143,51 +146,77 @@ body {
   z-index: 2;
 }
 
+// NAVIGATION
+
 aside {
   position: absolute;
-  top: 50px;
+  top: 150px;
   left: 50px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  align-content: start;
+  align-content: center;
   justify-content: start;
-  background-color: $colorWhite;
-  height: 90vh;
+  background: transparent;
+  backdrop-filter: blur(20px);
+
+  height: 50vh;
   border: 2px solid #0f9d79;
-  width: 100px;
+  width: 65px;
   border-radius: 15px;
   transition: all 1.5 ease-in-out;
   -webkit-transition: all 1.5 ease-in-out;
-  padding-left: 20px;
+  // padding-left: 20px;
 }
+
+.navItemsContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+}
+
 .navItem {
-  padding: 15px;
+  padding: 15px 0px;
+  font-size: 20px;
+  color: $colorWhite;
 }
 
 aside.active {
-  width: 200px;
+  width: 150px;
+  align-content: start;
+  padding-left: 21px;
 }
 aside.active .navBarText {
   display: inline-block;
   transition: width 1.5 ease-in-out;
 }
 .hamburger {
-  width: 50px;
-  height: 50px;
-  border: 2px solid #0f9d79;
-  border-radius: 5px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 65px;
+  height: 65px;
+  border: 2px solid $colorGreen;
+  border-radius: 15px;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  background-color: white;
+  background-color: $colorGreen;
   padding: 0;
 }
 .hamburger:hover {
-  background-color: #0f9d79;
-  border: 2px solid #0f9d79;
+  background-color: $colorDarkGreen;
+  border: 2px solid $colorDarkGreen;
 }
+
+.faBars {
+  font-size: 20px;
+}
+
 .faBars:hover {
   color: $colorWhite;
 }
@@ -198,7 +227,14 @@ aside.active .navBarText {
   display: none;
   width: 0px;
   transition: all 0.5 ease-in-out;
+  padding-left: 20px;
 }
+
+.logout {
+  position: absolute;
+  bottom: 10px;
+}
+
 .messagesSection {
   ul {
     list-style: none;
