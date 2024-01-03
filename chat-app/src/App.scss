@@ -52,6 +52,9 @@ $colorDarkGreen: #0c1d24;
 $colorGreen: rgba(15, 157, 122, 0.65);
 $colorBorder: #ffffff80;
 $colorBlack: #333333;
+$colorYellow: #c8e690;
+$transparent: transparent;
+$blur: blur(20px);
 
 html,
 body {
@@ -72,8 +75,8 @@ body {
   @include flexContainer;
   width: 400px;
   height: 400px;
-  background: transparent;
-  backdrop-filter: blur(20px);
+  background: $transparent;
+  backdrop-filter: $blur;
   border: $colorBorder solid;
   border-radius: 25px;
   // box-shadow: 2px 2px 2px 1px $colorBorder;
@@ -157,8 +160,8 @@ aside {
   flex-wrap: wrap;
   align-content: center;
   justify-content: start;
-  background: transparent;
-  backdrop-filter: blur(20px);
+  background: $transparent;
+  backdrop-filter: $blur;
 
   height: 50vh;
   border: 2px solid #0f9d79;
@@ -188,10 +191,7 @@ aside.active {
   width: 150px;
   align-content: start;
   padding-left: 21px;
-}
-aside.active .navBarText {
-  display: inline-block;
-  transition: width 1.5 ease-in-out;
+  transition: width 0.5s ease-in-out;
 }
 .hamburger {
   position: absolute;
@@ -205,7 +205,8 @@ aside.active .navBarText {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  background-color: $colorGreen;
+  background: $transparent;
+  backdrop-filter: $blur;
   padding: 0;
 }
 .hamburger:hover {
@@ -225,9 +226,16 @@ aside.active .navBarText {
 }
 .navBarText {
   display: none;
-  width: 0px;
   transition: all 0.5 ease-in-out;
   padding-left: 20px;
+}
+aside.active .navBarText {
+  display: inline-block;
+  animation-delay: 0.5s;
+}
+
+.navItem:hover {
+  color: $colorYellow;
 }
 
 .logout {
