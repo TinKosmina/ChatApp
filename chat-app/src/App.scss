@@ -167,7 +167,7 @@ aside {
   border: 2px solid #0f9d79;
   width: 65px;
   border-radius: 15px;
-  transition: all 1.5 ease-in-out;
+  transition: all 0.2s ease-in-out;
   -webkit-transition: all 1.5 ease-in-out;
   // padding-left: 20px;
 }
@@ -179,6 +179,9 @@ aside {
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: center;
+  svg {
+    padding: 0 10px;
+  }
 }
 
 .navItem {
@@ -191,7 +194,7 @@ aside.active {
   width: 150px;
   align-content: start;
   padding-left: 21px;
-  transition: width 0.5s ease-in-out;
+  transition: all 0.2s ease;
 }
 .hamburger {
   position: absolute;
@@ -225,13 +228,17 @@ aside.active {
   color: $colorWhite;
 }
 .navBarText {
-  display: none;
-  transition: all 0.5 ease-in-out;
-  padding-left: 20px;
+  // display: none;
+  transition: all 0.2s ease;
+  padding-left: 0px;
+  width: 0px;
+  opacity: 0;
+  display: inline-block;
 }
 aside.active .navBarText {
-  display: inline-block;
-  animation-delay: 0.5s;
+  transition-delay: 0.2s;
+  width: 100px;
+  opacity: 1;
 }
 
 .navItem:hover {
