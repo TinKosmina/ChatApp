@@ -21,14 +21,20 @@ export default function RegisterPage() {
             placeholder="Password"
             required
           />
-          <label for="fileUpload">Choose your avatar</label>
-          <br />
           <input
+            style={{ display: "none" }}
             type="file"
             id="avatar"
             name="avatar"
             accept=".png,.jpg,.webp,.jpeg,svg,"
           />
+          <label htmlFor="file">
+            <img
+              className="avatarUpload"
+              src="../style/pictures/mail-icon-2048x2048-525ey8hu.png"
+              alt="avatarUpload"
+            />
+          </label>
           <Link to="mainpage">
             {" "}
             <input type="submit" value="Register" />
