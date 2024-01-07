@@ -195,7 +195,7 @@ aside {
   background: $transparent;
   backdrop-filter: $blur;
 
-  height: 50vh;
+  height: 70vh;
   border: 2px solid #0f9d79;
   width: 65px;
   border-radius: 15px;
@@ -228,6 +228,7 @@ aside.active {
   padding-left: 21px;
   transition: all 0.2s ease;
 }
+
 .hamburger {
   position: absolute;
   top: 50px;
@@ -289,4 +290,27 @@ aside.active .navBarText {
       color: white;
     }
   }
+}
+
+// MAINPAGE
+
+.chatContainer {
+  position: absolute;
+  top: 150px;
+  left: 180px;
+  margin-right: 50px;
+  background: $transparent;
+  backdrop-filter: $blur;
+
+  height: 70vh;
+  border: 2px solid #0f9d79;
+  width: calc(85vw - 50px);
+  border-radius: 15px;
+  transition: all 0.2s ease;
+}
+
+.chatContainer.chatActive {
+  left: 300px;
+  width: calc(80vw - 120px);
+  background-color: red($color: #000000);
 }

@@ -12,9 +12,11 @@ import { useState } from "react";
 
 export default function Navigation() {
   const [activeNavBar, setActiveNavBar] = useState(false);
+  const [activeChat, setActiveChat] = useState(false);
 
   const toggleActiveNavBar = () => {
     setActiveNavBar(!activeNavBar);
+    document.querySelector(".chatContainer").classList.toggle("chatActive");
   };
 
   return (
