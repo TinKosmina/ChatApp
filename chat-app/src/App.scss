@@ -295,6 +295,8 @@ aside.active .navBarText {
 // MAINPAGE
 
 .chatContainer {
+  @include flexContainerRow;
+  //
   position: absolute;
   top: 150px;
   left: 180px;
@@ -312,5 +314,51 @@ aside.active .navBarText {
 .chatContainer.chatActive {
   left: 300px;
   width: calc(80vw - 120px);
-  background-color: red($color: #000000);
 }
+
+.sideContainer {
+  width: 20%;
+  height: 100%;
+  border-right: 2px solid #0f9d79;
+  border-radius: 15px 0 0 15px;
+  background-color: #0c1d24a0;
+}
+
+// SEARCH
+.searchContainer {
+  width: 100%;
+  height: 30px;
+  border-bottom: 2px solid rgba(236, 232, 232, 0.304);
+  input {
+    background-color: $transparent;
+    width: 100%;
+    height: 30px;
+    border: 0;
+    color: rgba(255, 255, 255, 0.579);
+  }
+
+  .chatsContainer {
+    @include flexContainer;
+    align-content: flex-start;
+    width: inherit;
+    .singleChat {
+      @include flexContainerRow;
+      border-bottom: 1px solid grey;
+      width: inherit;
+      padding: 15px;
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+      p {
+        color: white;
+      }
+    }
+  }
+}
+
+// CHATS

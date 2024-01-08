@@ -1,8 +1,3 @@
 export default function Chats() {
-    return (<>
-    
-    
-    
-    </> );
+  return <></>;
 }
-
