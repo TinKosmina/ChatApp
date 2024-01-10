@@ -1,7 +1,7 @@
 import Chats from "./Chats";
-import InputText from "./InputText";
 import Navigation from "./Navigation";
 import Search from "./Search";
+import ChatRoom from "./ChatRoom";
 
 export default function MainPage() {
   return (
@@ -14,8 +14,7 @@ export default function MainPage() {
           <Chats />
         </div>
 
-        <h1 class="mainPageHeader">Welcome, This is the main page!</h1>
-        <InputText></InputText>
+        <ChatRoom />
       </div>
     </div>
   );
