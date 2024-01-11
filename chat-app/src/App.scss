@@ -393,8 +393,8 @@ aside.active .navBarText {
 // CHAT ROOM
 .chatRoom {
   @include flexContainer;
-  width: 76.8%;
-  border-radius: 15px;
+  width: 76.85%;
+  border-radius: 0 15px 15px 0;
 
   .chatRoomTopBar {
     width: 100%;
@@ -408,14 +408,14 @@ aside.active .navBarText {
       padding: 15px;
       width: 25%;
       img {
-        width: 50px;
-        height: 50px;
+        width: 30px;
+        height: 30px;
         border-radius: 50px;
         object-fit: cover;
         margin-right: 15px;
       }
       span {
-        color: $colorWhite;
+        color: lightgrey;
         align-self: center;
       }
     }
@@ -436,6 +436,64 @@ aside.active .navBarText {
           color: $colorGreen;
           cursor: $cursorPointer;
         }
+      }
+    }
+  }
+}
+
+// MESSAGE INPUT
+
+.inputMessageContainer {
+  position: absolute;
+  bottom: 0;
+  width: 77%;
+}
+
+.inputMessage {
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  form {
+    background-color: $colorDarkGreen;
+    padding: 5px 15px;
+    border-radius: 15px;
+    width: 100%;
+    input {
+      height: 40px;
+      width: 89.3%;
+      border: 0;
+      background-color: transparent;
+      border: 0;
+      outline: none;
+      color: lightgray;
+      ::placeholder {
+        color: lightgrey;
+      }
+    }
+    button {
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+      svg {
+        color: $colorWhite;
+        font-size: 20px;
+        margin-left: 15px;
+        &:hover {
+          color: $colorYellow;
+        }
+      }
+    }
+    svg {
+      color: $colorWhite;
+      font-size: 20px;
+
+      &:hover {
+        color: $colorYellow;
       }
     }
   }
