@@ -498,3 +498,34 @@ aside.active .navBarText {
     }
   }
 }
+
+.messageInfo {
+  padding: 25px;
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+  p {
+    margin-top: 0;
+  }
+  .messageContent {
+    max-width: 60%;
+    .messageValue {
+      background-color: $colorDarkGreen;
+      margin: 0px 0 5px 10px;
+
+      color: $colorYellow;
+      width: fit-content;
+      height: fit-content;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  }
+}

@@ -15,21 +15,33 @@ function InputText() {
 
   return (
     <div className="inputMessageContainer">
-      <ul>
-        {messages.map((message, index) => {
-          return <li key={index}>{message}</li>;
-        })}
-      </ul>
+      <div className="messageInfo">
+        <div className="messageImage">
+          <img src="../style/pictures/johnDoe.jpg" alt="johndoe" />
+          <p>20:21</p>
+        </div>
+        <div className="messageContent">
+          {messages.map((message, index) => {
+            return (
+              <div className="messageValue" key={index}>
+                {message}
+              </div>
+            );
+          })}
+        </div>
+      </div>
       <div className="inputMessage">
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             value={messageInput}
             onChange={(e) => setMessageInput(e.target.value)}
-            placeholder="Message area"
+            placeholder="Type something..."
           />
-
-          <FontAwesomeIcon icon={faSquarePlus} />
+          <input type="file" style={{ display: "none" }} id="file" />
+          <label htmlFor="file">
+            <FontAwesomeIcon icon={faSquarePlus} />
+          </label>
           <button type="submit">
             <FontAwesomeIcon icon={faPaperPlane} />
           </button>
