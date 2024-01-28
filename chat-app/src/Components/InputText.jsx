@@ -16,10 +16,6 @@ function InputText() {
   return (
     <div className="inputMessageContainer">
       <div className="messageInfo">
-        <div className="messageImage">
-          <img src="../style/pictures/johnDoe.jpg" alt="johndoe" />
-          <p>20:21</p>
-        </div>
         <div className="messageContent">
           {messages.map((message, index) => {
             return (
@@ -28,6 +24,10 @@ function InputText() {
               </div>
             );
           })}
+          <div className="messageImage">
+            <img src="../style/pictures/johnDoe.jpg" alt="johndoe" />
+            <p>20:21</p>
+          </div>
         </div>
       </div>
       <div className="inputMessage">
