@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
-import { app } from "../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+// import { Link } from "react-router-dom";
+// import { app } from "../firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, storage, db } from "../firebase";
 import { useState } from "react";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function RegisterPage() {
   const [error, setError] = useState(false);
@@ -15,10 +17,33 @@ export default function RegisterPage() {
     const file = e.target[3].files[0];
 
     try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+
+      const storageRef = ref(storage, displayName);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on(
+        "state_changed",
+        (error) => {
+          console.log("Error upload file", error);
+          setError(true);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            console.log("File available at", downloadURL);
+            await updateProfile(res.user, {
+              displayName,
+              photoURL: downloadURL,
+            });
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              displayName,
+              email,
+              photoURL: downloadURL,
+            });
+          });
+        }
       );
     } catch {
       setError(true);
@@ -28,7 +53,7 @@ export default function RegisterPage() {
     <div>
       <section class="registerSection">
         <h2>Register</h2>
-        <form onSubmit={handleSubmit} method="POST">
+        <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Username" required />
           <br />
           <input type="email" placeholder="Email" required />
@@ -37,8 +62,8 @@ export default function RegisterPage() {
           <input
             style={{ display: "none" }}
             type="file"
-            id="avatar"
-            name="avatar"
+            id="file"
+            name="file"
             accept=".png,.jpg,.webp,.jpeg,svg,"
           />
           <div className="avatarUpload">
