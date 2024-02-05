@@ -1,0 +1,42 @@
+// import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
+// import { auth, storage, db } from "../firebase";
+
+// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+// import { doc, setDoc } from "firebase/firestore";
+
+// import { v4 as uuidv4 } from "uuid";
+
+// try {
+//   const res = await createUserWithEmailAndPassword(auth, email, password);
+//   console.log(res);
+//   const fileId = uuidv4();
+//   const storageRef = ref(storage, `users/${res.user.uid}/${fileId}`);
+//   const uploadTask = uploadBytesResumable(storageRef, file);
+
+//   uploadTask.on(
+//     // "state_changed",
+//     (error) => {
+//       console.log("Error upload file", error);
+//       setError(true);
+//     },
+//     () => {
+//       getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+//         console.log("File available at", downloadURL);
+//         await updateProfile(res.user, {
+//           displayName,
+//           photoURL: downloadURL,
+//         });
+//         await setDoc(doc(db, `users`, res.user.uid), {
+//           uid: res.user.uid,
+//           displayName,
+//           email,
+//           photoURL: downloadURL,
+//         });
+//       });
+//     }
+//   );
+// } catch {
+//   setError(true);
+// }
