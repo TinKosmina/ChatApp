@@ -9,6 +9,8 @@ import {
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function Navigation() {
   const [activeNavBar, setActiveNavBar] = useState(false);
@@ -43,10 +45,10 @@ export default function Navigation() {
             <FontAwesomeIcon icon={faGear} />
             <span className="navBarText">Settings</span>
           </Link>
-          <Link to="mainpage" className="navItem logout">
+          <button onClick={() => signOut(auth)} className="navItem logout">
             <FontAwesomeIcon icon={faRightFromBracket} />
             <span className="navBarText">Logout</span>
-          </Link>
+          </button>
         </div>
       </aside>
     </>
