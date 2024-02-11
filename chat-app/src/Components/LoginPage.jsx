@@ -1,11 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { auth, db, storage } from "../firebase";
+
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginPage() {
+  const [err, setErr] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate("/mainpage");
+    } catch (err) {
+      setErr(true);
+      console.log("EEROR 2");
+    }
+  };
+
   return (
     <div>
       <section class="loginSection">
         <h2>Login</h2>
-        <form method="POST">
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             id="firstName"
@@ -26,11 +47,11 @@ export default function LoginPage() {
             <label for="remember-me">Remember me?</label>
             <a href="#">Forgot password?</a>
           </div>
-          <Link to="mainpage">
-            {" "}
-            <input type="submit" value="Login" />
-          </Link>
+
+          <input type="submit" value="Login" />
+
           {/* <button type="submit"><Link to="main-page"></Link></button> */}
+          {err && <span>There was an error!</span>}
         </form>
         <div class="divider">OR</div>
         <div class="alternateLogin">
@@ -50,7 +71,7 @@ export default function LoginPage() {
             alt="appleLogin"
           />
           <h6>
-            Not a user? <Link to="registerpage">Register here!</Link>
+            Not a user? <Link to="/registerpage">Register here!</Link>
           </h6>
         </div>
       </section>

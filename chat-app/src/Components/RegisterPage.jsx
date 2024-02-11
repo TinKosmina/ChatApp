@@ -74,6 +74,7 @@ export default function RegisterPage() {
               uid: res.user.uid,
               displayName,
               email,
+              password,
               photoURL: downloadURL,
             });
             // await setDoc(doc(db, "userChats", res.user.id, {}));
