@@ -1,8 +1,8 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { auth, db, storage } from "../firebase";
 
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function LoginPage() {
   const [err, setErr] = useState(false);
@@ -71,7 +71,7 @@ export default function LoginPage() {
             alt="appleLogin"
           />
           <h6>
-            Not a user? <Link to="/registerpage">Register here!</Link>
+            Not a user? <Link to="registerpage">Register here!</Link>
           </h6>
         </div>
       </section>

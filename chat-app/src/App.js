@@ -40,8 +40,8 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="loginpage" element={<LoginPage />} />
-          <Route path="registerpage" element={<RegisterPage />} />
+          <Route path="/loginpage" element={<LoginPage />} />
+          <Route path="/registerpage" element={<RegisterPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
