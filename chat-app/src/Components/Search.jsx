@@ -9,6 +9,8 @@ import {
   setDoc,
   doc,
   updateDoc,
+  serverTimestamp,
+  getDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
@@ -49,23 +51,34 @@ export default function Search() {
         ? currentUser.uid + user.uid
         : user.uid + currentUser.uid;
     try {
-      const res = await getDocs(db, "chats", combineUIDs);
+      const res = await getDoc(doc(db, "chats", combineUIDs));
 
       if (!res.exists()) {
         // create a chat group
         await setDoc(doc(db, "chats", combineUIDs), { messages: [] });
-      }
 
-      // create user chats
-      await updateDoc(doc(db, "userChats", currentUser.uid), {
-        [combineUIDs + ".userInfo"]: {
-          uid: user.uid,
-          displayName: user.displayName,
-          photoURL: user.photoURL,
-        },
-        [combineUIDs+".date"]
-      });
-    } catch (err) {}
+        // create user chats
+        await updateDoc(doc(db, "userChats", currentUser.uid), {
+          [combineUIDs + ".userInfo"]: {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          },
+          [combineUIDs + ".date"]: serverTimestamp(),
+        });
+
+        await updateDoc(doc(db, "userChats", user.uid), {
+          [combineUIDs + ".userInfo"]: {
+            uid: currentUser.uid,
+            displayName: currentUser.displayName,
+            photoURL: currentUser.photoURL,
+          },
+          [combineUIDs + ".date"]: serverTimestamp(),
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
 
     // create user chats
   };
