@@ -18,7 +18,7 @@ export default function LoginPage() {
       navigate("/mainpage");
     } catch (err) {
       setErr(true);
-      console.log("EEROR 2");
+      console.log(err);
     }
   };
 
