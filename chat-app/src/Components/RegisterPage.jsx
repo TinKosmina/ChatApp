@@ -40,6 +40,7 @@ export default function Register() {
               displayName,
               email,
               photoURL: downloadURL,
+              password: password,
             });
 
             //create empty user chats on firestore
