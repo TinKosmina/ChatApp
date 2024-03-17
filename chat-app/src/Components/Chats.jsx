@@ -1,10 +1,10 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { db } from "../firebase";
 import { ChatContext } from "../context/ChatContext";
+import { db } from "../firebase";
 
-export default function Chats() {
+const Chats = () => {
   const [chats, setChats] = useState([]);
 
   const { currentUser } = useContext(AuthContext);
@@ -36,13 +36,14 @@ export default function Chats() {
           key={chat[0]}
           onClick={() => handleSelect(chat[1].userInfo)}
         >
-          <img src={chat[1].userInfo.photoURL} alt="John" />
+          <img src={chat[1].userInfo.photoURL} alt="" />
           <div className="chatContent">
             <h4>{chat[1].userInfo.displayName}</h4>
-            <p>{chat[1].userInfo.lastMessage?.text}</p>
+            <p>{chat[1].lastMessage?.text}</p>
           </div>
         </div>;
       })}
     </div>
   );
-}
+};
+export default Chats;
