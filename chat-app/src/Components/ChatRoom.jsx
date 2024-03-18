@@ -1,5 +1,3 @@
-import InputText from "./InputText";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -8,6 +6,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { ChatContext } from "../context/ChatContext";
 import React, { useContext } from "react";
+import Messages from "./Messages";
+import InputText from "./InputText";
 
 export default function ChatRoom() {
   const { data } = useContext(ChatContext);
@@ -16,7 +16,7 @@ export default function ChatRoom() {
     <div className="chatRoom">
       <div className="chatRoomTopBar">
         <div className="chatRoomContactInfo">
-          <img src="../style/pictures/johnDoe.jpg" alt="John" />
+          <img src={data.user?.photoURL} alt="John" />
           <span>{data.user?.displayName}</span>
         </div>
         <div className="chatRoomIcons">
@@ -24,8 +24,11 @@ export default function ChatRoom() {
           <FontAwesomeIcon icon={faVideo} />
           <FontAwesomeIcon icon={faCircleInfo} />
         </div>
+        <div>
+          <Messages />
+        </div>
+        <InputText />
       </div>
-      <InputText></InputText>
     </div>
   );
 }

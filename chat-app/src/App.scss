@@ -514,43 +514,40 @@ aside.active .navBarText {
   align-items: center;
   align-content: center;
 
-  form {
+  input {
+    height: 40px;
+    width: 89.3%;
+    border: 0;
     background-color: $colorDarkGreen;
+    border: 0;
+    outline: none;
+    color: lightgray;
     padding: 5px 15px;
     border-radius: 15px;
     width: 100%;
-    input {
-      height: 40px;
-      width: 89.3%;
-      border: 0;
-      background-color: transparent;
-      border: 0;
-      outline: none;
-      color: lightgray;
-      ::placeholder {
-        color: lightgrey;
-      }
+    ::placeholder {
+      color: lightgrey;
     }
-    button {
-      background-color: transparent;
-      box-shadow: none;
-      border: none;
-      svg {
-        color: $colorWhite;
-        font-size: 20px;
-        margin-left: 15px;
-        &:hover {
-          color: $colorYellow;
-        }
-      }
-    }
+  }
+  button {
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
     svg {
       color: $colorWhite;
       font-size: 20px;
-
+      margin-left: 15px;
       &:hover {
         color: $colorYellow;
       }
+    }
+  }
+  svg {
+    color: $colorWhite;
+    font-size: 20px;
+
+    &:hover {
+      color: $colorYellow;
     }
   }
 }
