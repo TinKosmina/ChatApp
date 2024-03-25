@@ -8,6 +8,7 @@ import { ChatContext } from "../context/ChatContext";
 import React, { useContext } from "react";
 import Messages from "./Messages";
 import InputText from "./InputText";
+import ChatMessage from "./ChatMessage";
 
 export default function ChatRoom() {
   const { data } = useContext(ChatContext);
@@ -26,8 +27,8 @@ export default function ChatRoom() {
         </div>
         <div>
           <Messages />
+          <InputText />
         </div>
-        <InputText />
       </div>
     </div>
   );

@@ -1,47 +1,42 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
-
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
-import { Timestamp, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  serverTimestamp,
+  Timestamp,
+  updateDoc,
+} from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { faPaperPlane, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function InputText() {
+export default function InputText() {
   const [text, setText] = useState("");
-  const [image, setImage] = useState("null");
+  const [img, setImg] = useState(null);
 
-  const [messages, setMessage] = useState([]);
-  const [messageInput, setMessageInput] = useState();
-
-  const currentUser = useContext(AuthContext);
-  const data = useContext(ChatContext);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    setMessage([...messages, messageInput]);
-    setMessageInput("");
-  }
-
-  console.log(data);
+  const { currentUser } = useContext(AuthContext);
+  const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
-    if (image) {
+    if (img) {
       const storageRef = ref(storage, uuid());
-      const uploadTask = uploadBytesResumable(storageRef, image);
+
+      const uploadTask = uploadBytesResumable(storageRef, img);
 
       uploadTask.on(
         (error) => {
-          console.log(error);
+          //TODO:Handle Error
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await updateDoc(doc(db, "chats", data.chatId), {
               messages: arrayUnion({
                 id: uuid(),
-                messageInput,
+                text,
                 senderId: currentUser.uid,
                 date: Timestamp.now(),
                 img: downloadURL,
@@ -54,54 +49,52 @@ function InputText() {
       await updateDoc(doc(db, "chats", data.chatId), {
         messages: arrayUnion({
           id: uuid(),
-          messageInput,
+          text,
           senderId: currentUser.uid,
           date: Timestamp.now(),
         }),
       });
     }
-  };
 
+    await updateDoc(doc(db, "userChats", currentUser.uid), {
+      [data.chatId + ".lastMessage"]: {
+        text,
+      },
+      [data.chatId + ".date"]: serverTimestamp(),
+    });
+
+    await updateDoc(doc(db, "userChats", data.user.uid), {
+      [data.chatId + ".lastMessage"]: {
+        text,
+      },
+      [data.chatId + ".date"]: serverTimestamp(),
+    });
+
+    setText("");
+    setImg(null);
+  };
   return (
     <div className="inputMessageContainer">
-      {/* <div className="messageInfo">
-        <div className="messageContent">
-          {messages.map((message, index) => {
-            return (
-              <div className="messageValue" key={index}>
-                {message}
-              </div>
-            );
-          })}
-          <div className="messageImage">
-            <img src="../style/pictures/johnDoe.jpg" alt="johndoe" />
-            <p>20:21</p>
-          </div>
-        </div>
-      </div> */}
       <div className="inputMessage">
         <input
           type="text"
           placeholder="Type something..."
-          onChange={(e) => setMessageInput(e.target.value)}
-          value={messageInput}
+          onChange={(e) => setText(e.target.value)}
+          value={text}
         />
         <input
           type="file"
           style={{ display: "none" }}
           id="file"
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => setImg(e.target.files[0])}
         />
         <label htmlFor="file">
           <FontAwesomeIcon icon={faSquarePlus} />
         </label>
         <button onClick={handleSend}>
-          {/* <FontAwesomeIcon icon={faPaperPlane} /> */}
-          SEND
+          <FontAwesomeIcon icon={faPaperPlane} />
         </button>
       </div>
     </div>
   );
 }
-
-export default InputText;
