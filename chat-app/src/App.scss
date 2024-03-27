@@ -4,7 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-content: center;
 }
 
@@ -32,9 +32,8 @@
   width: 80%;
   border-radius: 20px;
   background: $colorDarkGreen;
-  margin: 20px 0px !important;
+  margin: 10px 0px;
   padding: 10px 15px;
-  margin: 10px 0;
   border: none;
 }
 
@@ -67,6 +66,7 @@ $cursorPointer: pointer;
 
 html,
 body {
+  width: 100%;
   height: 100%;
   background: url("../public/style/pictures/peakpx.jpg");
   background-repeat: no-repeat;
@@ -76,35 +76,38 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Urbanist", sans-serif;
 }
 
 // LOGIN SECTION
+
+.loginSection {
+  margin: 10px 0;
+}
 
 .loginSection,
 .registerSection {
   @include flexContainer;
   width: 400px;
-  height: 470px;
+  height: auto;
   background: $transparent;
   backdrop-filter: $blur;
   border: $colorBorder solid;
   border-radius: 25px;
-  // box-shadow: 2px 2px 2px 1px $colorBorder;
   padding: 10px;
+  row-gap: 10px;
   h2 {
     color: $colorWhite;
     font-size: 40px;
     width: 80%;
     height: 15%;
-    padding: 20px 0;
+    padding: 20px 20px 0 20px;
     text-align: center;
-    border-bottom: 2px $colorBorder solid;
+
     margin: 0;
+    align-self: center;
   }
   form {
-    padding-top: 20px;
-
     text-align: center;
     input[type="text"],
     input[type="password"],
@@ -116,7 +119,7 @@ body {
       @include submitButton;
     }
     input[type="file"]::file-selector-button {
-      background: url(../public/style/pictures/mail-icon-2048x2048-525ey8hu.png);
+      background-image: url(../public/style/pictures/mail-icon-2048x2048-525ey8hu.png);
     }
     ::placeholder {
       color: $colorWhite;
@@ -124,6 +127,7 @@ body {
     .remember-me {
       display: flex;
       justify-content: center;
+      margin-top: 15px;
       label {
         color: $colorWhite;
       }
@@ -131,6 +135,11 @@ body {
         margin-left: 40px;
         color: $colorBlack;
       }
+    }
+    input[type="submit"].loginButton {
+      @include submitButton;
+      margin-top: 20px;
+      margin-bottom: 0;
     }
     .avatarUpload {
       display: flex;
@@ -140,47 +149,27 @@ body {
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
+      margin: 5px 0;
+
       label {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
 
         img {
-          width: 40px;
-          height: 40px;
+          width: 60px;
+          height: 60px;
           display: inline-block;
-          margin-right: 15px;
+          margin-right: 10px;
           margin-left: 15px;
         }
         p {
           color: $colorWhite;
+          align-self: center;
         }
       }
     }
   }
-}
-
-.registerSection {
-  height: 490px;
-  .avatarUpload {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-.divider {
-  @include divider;
-}
-.divider:after,
-.divider:before {
-  @include dividerBefore;
-}
-.alternateLogin {
-  @include flexContainer;
-  margin: 10px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   h6 {
     width: 100%;
     text-align: center;
@@ -194,13 +183,33 @@ body {
   }
 }
 
-.alternateLoginImage {
-  width: 30px;
-  height: 30px;
-  margin: 0px 10px;
-  padding: 5px;
-  background-color: $colorWhite;
-  border-radius: 50px;
+.divider {
+  @include divider;
+}
+.divider:after,
+.divider:before {
+  @include dividerBefore;
+}
+
+// REGISTER PAGE
+
+.registerSection {
+  height: 500px;
+  .avatarUpload {
+    width: 20px;
+    height: 20px;
+  }
+  h6 {
+    width: 100%;
+    text-align: center;
+    color: $colorWhite;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 20px 0;
+    a {
+      color: $colorYellow;
+    }
+  }
 }
 
 .mainPageHeader {

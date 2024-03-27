@@ -31,7 +31,7 @@ export default function LoginPage() {
             type="text"
             id="firstName"
             name="firstName"
-            placeholder="Username"
+            placeholder="Email"
             required
           />
           <br />
@@ -48,32 +48,15 @@ export default function LoginPage() {
             <a href="#">Forgot password?</a>
           </div>
 
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" className="loginButton" />
 
           {/* <button type="submit"><Link to="main-page"></Link></button> */}
           {err && <span>There was an error!</span>}
         </form>
-        <div class="divider">OR</div>
-        <div class="alternateLogin">
-          <img
-            class="alternateLoginImage"
-            src="../style/pictures/mail-icon-2048x2048-525ey8hu.png"
-            alt="mailLogin"
-          />
-          <img
-            class="alternateLoginImage"
-            src="../style/pictures/Google__G__Logo.svg.webp"
-            alt="googleLogin"
-          />
-          <img
-            class="alternateLoginImage"
-            src="/style/pictures/knowledge_graph_logo.png"
-            alt="appleLogin"
-          />
-          <h6>
-            Not a user? <Link to="registerpage">Register here!</Link>
-          </h6>
-        </div>
+
+        <h6>
+          Not a user? <Link to="/registerpage">Register here!</Link>
+        </h6>
       </section>
     </div>
   );

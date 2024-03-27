@@ -15,7 +15,7 @@ import {
 import { AuthContext } from "./context/AuthContext";
 import MainPage from "./Components/MainPage";
 
-function App() {
+export default function App() {
   const { currentUser } = useContext(AuthContext);
   // console.log(currentUser);
 
@@ -30,22 +30,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route
-            path="mainpage"
-            index
-            element={
-              <ProtectedRoute>
-                <MainPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/loginpage" element={<LoginPage />} />
-          <Route path="/registerpage" element={<RegisterPage />} />
-        </Route>
+        <Route path="/" element={<LoginPage />} />
+        <Route
+          index
+          path="/mainpage"
+          element={
+            <ProtectedRoute>
+              <MainPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/loginpage" element={<LoginPage />} />
+        <Route path="/registerpage" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
-export default App;

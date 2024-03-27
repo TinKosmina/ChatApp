@@ -77,10 +77,7 @@ export default function Register() {
           />
           <div className="avatarUpload">
             <label htmlFor="file">
-              <img
-                src="../style/pictures/mail-icon-2048x2048-525ey8hu.png"
-                alt="avatarUpload"
-              />
+              <img src="../style/pictures/uploadimage.png" alt="avatarUpload" />
               <p>Upload avatar</p>
             </label>
           </div>
@@ -89,6 +86,9 @@ export default function Register() {
 
           {err && <span>There was an error!</span>}
         </form>
+        <h6>
+          Already a user? <Link to="/loginpage">Go back</Link>
+        </h6>
       </section>
     </div>
   );
