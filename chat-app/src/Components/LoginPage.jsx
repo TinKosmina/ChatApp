@@ -51,8 +51,11 @@ export default function LoginPage() {
           <input type="submit" value="Login" className="loginButton" />
 
           {/* <button type="submit"><Link to="main-page"></Link></button> */}
-          {err && <span>There was an error!</span>}
         </form>
+
+        {err && (
+          <span style={{ textAlign: "center" }}>There was an error!</span>
+        )}
 
         <h6>
           Not a user? <Link to="/registerpage">Register here!</Link>
