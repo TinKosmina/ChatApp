@@ -335,7 +335,7 @@ aside.active .navBarText {
 
 .chatContainer {
   @include flexContainerRow;
-  //
+  flex-grow: 3;
   position: absolute;
   top: 150px;
   left: 180px;
@@ -356,7 +356,8 @@ aside.active .navBarText {
 }
 
 .sideContainer {
-  width: 300px;
+  flex-grow: 1;
+  // width: 300px;
   height: 100%;
   border-right: 2px solid #0f9d79;
   border-radius: 15px 0 0 15px;
@@ -387,10 +388,9 @@ aside.active .navBarText {
 
   // CHATS
   .chatsContainer {
-    @include flexContainer;
-    align-content: flex-start;
-    align-items: center;
-    width: inherit;
+    display: flex;
+    flex-direction: column;
+
     .chatContent {
       width: 68%;
       display: flex;
@@ -403,7 +403,8 @@ aside.active .navBarText {
 .singleChat,
 .searchChat {
   @include flexContainerRow;
-  width: 275px;
+  flex-grow: 1;
+  // width: 275px;
   height: 50px;
   padding: 15px;
   cursor: $cursorPointer;
@@ -458,8 +459,11 @@ aside.active .navBarText {
 // CHAT ROOM
 .chatRoom {
   @include flexContainer;
-  width: 76.85%;
+  justify-content: space-between;
+  // width: 76.85%;
+  flex-grow: 6;
   border-radius: 0 15px 15px 0;
+  padding-bottom: 20px;
 
   .chatRoomTopBar {
     width: 100%;
@@ -508,15 +512,18 @@ aside.active .navBarText {
 
 // MESSAGE INPUT
 
-.inputMessageContainer {
-  position: absolute;
-  bottom: 0;
-  width: 77%;
-}
+.inputContainer {
+  display: flex;
+  height: 75px;
 
+  .inputMessageContainer {
+    flex-grow: 1;
+  }
+}
 .inputMessage {
   display: flex;
   padding: 20px;
+  padding-bottom: 0;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -538,10 +545,21 @@ aside.active .navBarText {
       color: lightgrey;
     }
   }
+  label {
+    position: absolute;
+    right: 102px;
+    bottom: 37px;
+    cursor: pointer;
+  }
   button {
     background-color: transparent;
     box-shadow: none;
     border: none;
+    position: absolute;
+    right: 52px;
+    bottom: 37px;
+    cursor: pointer;
+
     svg {
       color: $colorWhite;
       font-size: 20px;
@@ -561,10 +579,31 @@ aside.active .navBarText {
   }
 }
 
+.messagesContainer {
+  flex-grow: 1;
+  overflow: auto;
+
+  .message {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+  }
+
+  .message.owner {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+  }
+}
+
 .messageInfo {
   padding: 25px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   overflow: scroll;
   overflow-y: auto;
   overflow-x: hidden;
@@ -574,21 +613,30 @@ aside.active .navBarText {
     object-fit: cover;
     border-radius: 50px;
   }
-  p {
-    margin-top: 0;
+  span {
+    color: $colorWhite;
+    font-size: 10px;
+    font-weight: 300;
+    margin-top: 2px;
   }
-  .messageContent {
-    max-width: 60%;
-    .messageValue {
-      background-color: $colorDarkGreen;
-      margin: 0px 0 5px 10px;
+}
+.messageContent {
+  width: fit-content;
+  background-color: $colorDarkGreen;
+  padding: 10px 25px;
+  border-radius: 10px 0px 10px 10px;
+  p {
+    color: $colorWhite;
+    margin: 0;
+  }
+  .messageValue {
+    margin: 0px 0 5px 10px;
 
-      color: $colorYellow;
-      width: fit-content;
-      height: fit-content;
-      padding: 10px;
-      border-radius: 10px;
-    }
+    color: $colorYellow;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 10px;
   }
 }
 

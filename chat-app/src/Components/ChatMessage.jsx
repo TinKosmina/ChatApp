@@ -26,7 +26,7 @@ export default function ChatMessage({ message }) {
           }
           alt=""
         />
-        <span>just now</span>
+        <span>{message.date}</span>
       </div>
       <div className="messageContent">
         <p>{message.text}</p>

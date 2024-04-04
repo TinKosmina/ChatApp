@@ -15,9 +15,9 @@ export default function ChatRoom() {
 
   return (
     <div className="chatRoom">
-      <div className="chatRoomTopBar">
+      <div div className="chatRoomTopBar">
         <div className="chatRoomContactInfo">
-          <img src={data.user?.photoURL} alt="John" />
+          {<img src={data.user?.photoURL} alt="John" />}
           <span>{data.user?.displayName}</span>
         </div>
         <div className="chatRoomIcons">
@@ -25,10 +25,12 @@ export default function ChatRoom() {
           <FontAwesomeIcon icon={faVideo} />
           <FontAwesomeIcon icon={faCircleInfo} />
         </div>
-        <div>
-          <Messages />
-          <InputText />
-        </div>
+      </div>
+      <div className="messagesContainer">
+        <Messages />
+      </div>
+      <div className="inputContainer">
+        <InputText />
       </div>
     </div>
   );
