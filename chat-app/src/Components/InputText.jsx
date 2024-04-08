@@ -23,7 +23,8 @@ export default function InputText() {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      this.handleSendt();
+      event.preventDefault(); // Prevent default behavior of form submission
+      handleSend();
     }
   };
 
@@ -88,6 +89,7 @@ export default function InputText() {
           placeholder="Type something..."
           onChange={(e) => setText(e.target.value)}
           value={text}
+          onKeyDown={handleKeyPress} // Listen to keydown event on input field
         />
         <input
           type="file"
@@ -98,7 +100,7 @@ export default function InputText() {
         <label htmlFor="file">
           <FontAwesomeIcon icon={faSquarePlus} />
         </label>
-        <button onClick={handleSend} onKeyDown={handleKeyPress}>
+        <button onClick={handleSend}>
           <FontAwesomeIcon icon={faPaperPlane} />
         </button>
       </div>

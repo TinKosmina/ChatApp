@@ -8,6 +8,15 @@ export default function ChatMessage({ message }) {
 
   const ref = useRef();
 
+  const convertFromSeconds = (seconds) => {
+    const dateObj = new Date(seconds * 1000); // Convert seconds to milliseconds
+    return dateObj; // Convert to locale-specific string
+  };
+
+  const resultDatetime = convertFromSeconds(message.date.seconds);
+  const messageHours = resultDatetime.getHours();
+  const messageMins = resultDatetime.getMinutes();
+
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
@@ -26,7 +35,10 @@ export default function ChatMessage({ message }) {
           }
           alt=""
         />
-        <span>{message.date}</span>
+        <span>
+          {messageHours}:{messageMins < 10 ? "0" : ""}
+          {messageMins}
+        </span>
       </div>
       <div className="messageContent">
         <p>{message.text}</p>
