@@ -21,6 +21,12 @@ export default function InputText() {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      this.handleSendt();
+    }
+  };
+
   const handleSend = async () => {
     if (img) {
       const storageRef = ref(storage, uuid());
@@ -73,6 +79,7 @@ export default function InputText() {
     setText("");
     setImg(null);
   };
+
   return (
     <div className="inputMessageContainer">
       <div className="inputMessage">
@@ -91,7 +98,7 @@ export default function InputText() {
         <label htmlFor="file">
           <FontAwesomeIcon icon={faSquarePlus} />
         </label>
-        <button onClick={handleSend}>
+        <button onClick={handleSend} onKeyDown={handleKeyPress}>
           <FontAwesomeIcon icon={faPaperPlane} />
         </button>
       </div>
