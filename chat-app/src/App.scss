@@ -672,6 +672,7 @@ aside.active .navBarText {
   body,
   html {
     align-content: flex-start;
+    min-height: 100%;
     width: 100vw;
     height: 100vh;
   }
@@ -722,5 +723,13 @@ aside.active .navBarText {
   }
   .sideContainer {
     width: 25%;
+  }
+
+  .chatContent p {
+    display: none;
+  }
+
+  .messageValue img {
+    width: 100px;
   }
 }
